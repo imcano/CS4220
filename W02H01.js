@@ -41,22 +41,27 @@ countingWords(arr3);
 // P04
 
 const createAnimals = (arr) => {
-  x = arr[0].reduce((acc, curr) => Object.assign(acc, curr), {});
+  // Is this technically a const? Value is never reassigned. Props are the only thing messed with
+  const animals = {};
 
-  console.log(arr[1]);
+  for (let i = 0; i < arr.length; i++) {
+    animals[i] = arr[i].reduce((acc, curr) => Object.assign(acc, {[curr.property] : curr.assign}), {});
+  }
+
+  console.log(animals);
 }
 
 const arr4 =
-       [
-           [
-               { property: 'name', assign: 'Garfield'},
-               { property: 'owner', assign: 'Jon Arbuckle'},
-               { property: 'type', assign: 'cat' }
-           ],
-           [
-               { property: 'name',assign: 'Snoopy' },
-               { property: 'owner',assign: 'Charlie Brown' },
-               { property: 'type',assign: 'dog' }
-           ]
-       ]
+            [
+                [
+                    { property: 'name', assign: 'Garfield'},
+                    { property: 'owner', assign: 'Jon Arbuckle'},
+                    { property: 'type', assign: 'cat' }
+                ],
+                [
+                    { property: 'name',assign: 'Snoopy' },
+                    { property: 'owner',assign: 'Charlie Brown' },
+                    { property: 'type',assign: 'dog' }
+                ]
+            ]
 createAnimals(arr4);
