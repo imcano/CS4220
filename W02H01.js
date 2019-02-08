@@ -4,9 +4,10 @@ const replaceLetters = (str, arr) => {
   // let newStr = '';
   // [...str].forEach(char => newStr += arr.includes(char) ? '-': char);
 
+  // 
   const newStr = [...str].reduce((str, char) => str + (arr.includes(char) ? '-': char));
 
-  console.log(newStr);
+  console.log('Solution 1:\n', newStr);
 }
 
 const arr1 = ['a', 'e', 'i', 'o', 'u' ];
@@ -20,7 +21,7 @@ const sumArray = (arr) => {
   
   const sum = arr.reduce((acc, e) => acc + (isNaN(parseInt(e)) ? 0 : parseInt(e)));
 
-  console.log(sum);
+  console.log('Solution 2:\n', sum);
 }
 
 const arr2 = [5, 2, 'a', 4, '7', true, 'b', 'c', 7, '8', false]
@@ -29,10 +30,10 @@ sumArray(arr2)
 // P03
 
 const countingWords = (arr) => {
-  let wordCount = {};
+  const wordCount = {};
   arr.forEach(word => wordCount.hasOwnProperty(word) ? wordCount[word]++ : wordCount[word] = 1 );
 
-  console.log(wordCount);
+  console.log('Solution 3:\n', wordCount);
 }
 
 const arr3 = ['hi', 'hi', 'hello', 'world', 'hello', 'hi' , 'greetings']
@@ -41,14 +42,13 @@ countingWords(arr3);
 // P04
 
 const createAnimals = (arr) => {
-  // Is this technically a const? Value is never reassigned. Props are the only thing messed with
   const animals = {};
 
   for (let i = 0; i < arr.length; i++) {
     animals[i] = arr[i].reduce((acc, curr) => Object.assign(acc, {[curr.property] : curr.assign}), {});
   }
 
-  console.log(animals);
+  console.log('Solution 4:\n', animals);
 }
 
 const arr4 =
