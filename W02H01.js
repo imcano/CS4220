@@ -45,7 +45,7 @@ const createAnimals = (arr) => {
   const animals = {};
 
   for (let i = 0; i < arr.length; i++) {
-    animals[i] = arr[i].reduce((acc, curr) => Object.assign(acc, {[curr.property] : curr.assign}), {});
+    animals[i] = arr[i].reduce((prevObj, currObj) => Object.assign(prevObj, {[currObj.property] : currObj.assign}), {});
   }
 
   console.log('Solution 4:\n', animals);
