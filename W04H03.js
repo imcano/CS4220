@@ -54,7 +54,6 @@ const print = ([missing, complete]) => {
   console.log('Priority:\n', complete);
 
   console.log('Missing Priority:\n', missing);
-  
 }
 
 const todos = [{
