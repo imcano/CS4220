@@ -15,7 +15,7 @@ async function iterateNumbers(numbers) {
     try {
       total = await adder(total, numbers[i]);
     } catch(err) {
-      console.log(err);
+        console.log(err);
     }
   }
 
@@ -27,11 +27,28 @@ iterateNumbers([1, 2, 3, 5, 8, 13, 21])
     // 53
 
 const checkPriority = ({ name, priority }, callback) => {
-
+  setTimeout(() => {
+    const error = !priority ? name: null;
+    callback(error, { name: priority });
+  }, 90);
 }
 
 const makePriorityList = (todos) => {
+  const complete = [];
+  const missing = [];
 
+  todos.forEach((todo) => {
+    checkPriority(todo, (error, result) => {
+      if (error) {
+          missing.push(error);
+      } else {
+          complete.push(result);
+      }
+    });
+  });
+
+  console.log(complete);
+  console.log(missing);
 }
 
 const todos = [{
