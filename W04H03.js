@@ -1,5 +1,3 @@
-
-
 const adder = (previous, next) => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
@@ -29,7 +27,7 @@ iterateNumbers([1, 2, 3, 5, 8, 13, 21])
 const checkPriority = ({ name, priority }, callback) => {
   setTimeout(() => {
     const error = !priority ? name: null;
-    callback(error, { name: priority });
+    callback(error, { name, priority });
   }, 90);
 }
 
@@ -37,18 +35,26 @@ const makePriorityList = (todos) => {
   const complete = [];
   const missing = [];
 
-  todos.forEach((todo) => {
+  todos.forEach((todo, i) => {
     checkPriority(todo, (error, result) => {
       if (error) {
           missing.push(error);
       } else {
           complete.push(result);
       }
+
+      if (i === todos.length - 1) print([missing, complete]);
+
     });
   });
+}
 
-  console.log(complete);
-  console.log(missing);
+const print = ([missing, complete]) => {
+  complete.sort((a, b) => a.priority - b.priority);
+  console.log('Priority:\n', complete);
+
+  console.log('Missing Priority:\n', missing);
+  
 }
 
 const todos = [{
