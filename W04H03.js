@@ -50,7 +50,7 @@ const makePriorityList = (todos) => {
 }
 
 const print = ([missing, complete]) => {
-  complete.sort((a, b) => a.priority - b.priority);
+  complete.sort((a, b) => b.priority - a.priority);
   console.log('Priority:\n', complete);
 
   console.log('Missing Priority:\n', missing);
